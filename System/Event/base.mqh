@@ -1,3 +1,5 @@
+#include "../../Common/define.mqh"
+
 template<typename FuncType>
 class STD_EventStructBase{
 public:
@@ -13,6 +15,7 @@ class STD_EventStructGlobal:public __BaseType{
 public:
    STD_EventStructGlobal(FuncType _func):__BaseType(_func){}
 };
+
 template<typename FuncType>
 class STD_EventStructObj:public __BaseType{
 public:
