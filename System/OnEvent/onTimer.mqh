@@ -6,10 +6,12 @@ class TOnTimer{
 public:
    static EventOnTimer* Event() {return &s_event;}
    static void Invoke(){
-      uint now=GetTickCount();
-      s_event.Invoke(s_start, s_last, now);
-      s_last = now;
+      Invoke(GetTickCount());
    }
+   static void Invoke(uint tickCount){
+      s_event.Invoke(s_start, s_last, tickCount);
+      s_last = tickCount;
+   }   
 private:
    static EventOnTimer s_event;
    static uint s_start;

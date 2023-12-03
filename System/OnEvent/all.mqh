@@ -1,4 +1,8 @@
 #include "onStart.mqh"
 #include "onTick.mqh"
 #include "onTimer.mqh"
-#include "onTrade.mqh"
+
+#ifdef __MQL5__
+   #include "onTrade.mqh"
+   #include "onTradeTransaction.mqh"
+#endif

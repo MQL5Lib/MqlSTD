@@ -1,3 +1,5 @@
+#ifdef __MQL5__
+
 #include "../../event.mqh"
 
 _stdEvent0(OnTrade);
@@ -11,3 +13,5 @@ private:
 };
 
 EventOnTrade TOnTrade::s_event;
+
+#endif
