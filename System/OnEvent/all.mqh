@@ -1,3 +1,3 @@
-#include "onInit.mqh"
 #include "onStart.mqh"
+#include "onTick.mqh"
 #include "onTimer.mqh"
