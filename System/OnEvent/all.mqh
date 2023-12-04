@@ -7,6 +7,7 @@
 #ifdef __MQL5__
    #include "onBookEvent.mqh"
    #include "onTester.mqh"
+   #include "onTesterDeinit.mqh"
    #include "onTesterInit.mqh"
    #include "onTesterPass.mqh"
    #include "onTrade.mqh"
