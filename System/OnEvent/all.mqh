@@ -1,4 +1,5 @@
 #include "onCalculate.mqh"
+#include "onChartEvent.mqh"
 #include "onStart.mqh"
 #include "onTick.mqh"
 #include "onTimer.mqh"
