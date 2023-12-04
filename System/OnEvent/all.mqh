@@ -8,6 +8,7 @@
    #include "onBookEvent.mqh"
    #include "onTester.mqh"
    #include "onTesterInit.mqh"
+   #include "onTesterPass.mqh"
    #include "onTrade.mqh"
    #include "onTradeTransaction.mqh"
 #endif
