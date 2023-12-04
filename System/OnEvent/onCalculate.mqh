@@ -36,7 +36,7 @@ public:
       }
 };
 
-class TOnCalculate{
+class STDOnCalculate{
 public:
    static EventOnCalculateFull* EventFull() {return &s_eventFull;}
    static EventOnCalculateShort* EventShort() {return &s_eventShort;}
@@ -59,5 +59,5 @@ private:
    static EventOnCalculateShort s_eventShort; 
 };
 
-EventOnCalculateFull TOnCalculate::s_eventFull;
-EventOnCalculateShort TOnCalculate::s_eventShort;
+EventOnCalculateFull STDOnCalculate::s_eventFull;
+EventOnCalculateShort STDOnCalculate::s_eventShort;

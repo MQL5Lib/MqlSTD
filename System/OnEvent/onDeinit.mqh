@@ -2,7 +2,7 @@
 
 _stdEvent1(OnDeinit,int);
 
-class TOnDeinit{
+class STDOnDeinit{
 public:
    static EventOnDeinit* Event() {return &s_event;}
    static void Invoke(){
@@ -18,5 +18,5 @@ private:
    static int s_last;
 };
 
-EventOnDeinit TOnDeinit::s_event;
-int TOnDeinit::s_last=-1;
+EventOnDeinit STDOnDeinit::s_event;
+int STDOnDeinit::s_last=-1;

@@ -4,7 +4,7 @@
 
 _stdEvent0(OnTesterPass);
 
-class TOnTesterPass{
+class STDOnTesterPass{
 public:
    static EventOnTesterPass* Event() {return &s_event;}
    static void Invoke() {s_event.Invoke();}
@@ -12,6 +12,6 @@ private:
    static EventOnTesterPass s_event; 
 };
 
-EventOnTesterPass TOnTesterPass::s_event;
+EventOnTesterPass STDOnTesterPass::s_event;
 
 #endif

@@ -29,6 +29,8 @@ public:
       return &other;
    }
    
+   void PushBack(const Type& val) {PushBack(new STDBiLinkNode<Type>(val));}
+   
    void PushBack(STDBiLinkNode<Type>* it){
       if (it){
          it.Prev(m_back);
@@ -82,14 +84,16 @@ public:
       }
    }
 
-   void Erase(STDBiLinkNode<Type>* it){
+   STDBiLinkNode<Type>* Erase(STDBiLinkNode<Type>* it){
       if (!it)
-         return;
+         return NULL;
+      STDBiLinkNode<Type>* ret=it.Next();
       if (it==m_front)
          m_front=m_front.Next();
       if (it==m_back)
          m_back=m_back.Prev();
       it.Erase();
+      return ret;
    }
 
    STDBiLinkNode<Type>* ExtractFront(){
@@ -153,3 +157,38 @@ private:
    STDBiLinkNode<Type>* m_front;
    STDBiLinkNode<Type>* m_back;
 };
+
+template<typename Type>
+STDBiLinkNode<Type>* Find(STDBiLink<Type>& l, const Type& val){
+   STDBiLinkNode<Type>* it=l.Front();
+   while(it){
+      if (it.Get().value == val))
+         return it;
+      it=it.Next();
+   }
+   return NULL;
+}
+
+template<typename Type>
+const STDBiLinkNode<Type>* Find(const STDBiLink<Type>& l, const Type& val){
+   STDBiLinkNode<Type>* it=l.Front();
+   while(it){
+      if (it.Get().value == val))
+         return it;
+      it=it.Next();
+   }
+   return NULL;
+}
+
+template<typename Type>
+bool Erase(STDBiLink<Type>& l, const Type& val){
+   STDBiLinkNode<Type>* it=l.Front();
+   while(it){
+      if (it.Get().value == val){
+         l.Erase(it);
+         return true;
+      }
+      it=it.Next();
+   }
+   return false;
+}

@@ -2,7 +2,7 @@
 
 _stdEvent3(OnTimer,uint,uint,uint);
 
-class TOnTimer{
+class STDOnTimer{
 public:
    static EventOnTimer* Event() {return &s_event;}
    static void Invoke(){
@@ -18,6 +18,6 @@ private:
    static uint s_last;
 };
 
-EventOnTimer TOnTimer::s_event;
-uint TOnTimer::s_start=GetTickCount();
-uint TOnTimer::s_last=0;
+EventOnTimer STDOnTimer::s_event;
+uint STDOnTimer::s_start=GetTickCount();
+uint STDOnTimer::s_last=0;
