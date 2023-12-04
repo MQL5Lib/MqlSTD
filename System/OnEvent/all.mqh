@@ -5,6 +5,7 @@
 #include "onTimer.mqh"
 
 #ifdef __MQL5__
+   #include "onBookEvent.mqh"
    #include "onTrade.mqh"
    #include "onTradeTransaction.mqh"
 #endif
