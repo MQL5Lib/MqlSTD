@@ -24,8 +24,29 @@ class STDForwardLinkNode:public _stdForwardLinkNode(Type){
 public:
    STDForwardLinkNode():_stdForwardLinkNode(Type)(){}
    STDForwardLinkNode(const Type& obj, STDForwardLinkNode<Type>* prev=NULL):_stdForwardLinkNode(Type)(obj, prev){}
-   void Insert(STDForwardLinkNode<Type>* it){ _Insert(it);}
    
+   void Insert(STDForwardLinkNode<Type>* it){
+      if (it)
+         _Insert(it);
+   }
+   
+   void EraseBefore(){
+      if (m_prev){
+         STDForwardLinkNode* it = m_prev;
+         m_prev=m_prev.m_prev;
+         delete it;
+      }
+   }
+
+   STDForwardLinkNode<Type>* ExtractBefore(){
+      STDForwardLinkNode<Type>* it = m_prev;
+      if (it){
+         m_prev=it.Prev();
+         it.Prev(NULL);
+      }
+      return it;
+   }
+
    STDForwardLinkNode<Type>* ReplaceBefore (STDForwardLinkNode<Type>* it){
       STDForwardLinkNode<Type>* ret = m_prev;
       m_prev = it;
@@ -36,23 +57,6 @@ public:
       else
          m_prev.Prev(NULL);
       return ret;         
-   }
-   
-   void EraseBefore(){
-      if (m_prev){
-         STDForwardLinkNode* it = m_prev;
-         m_prev=m_prev.m_prev;
-         delete it;
-      }
-   }
-   
-   STDForwardLinkNode<Type>* ExtractBefore(){
-      STDForwardLinkNode<Type>* it = m_prev;
-      if (it){
-         m_prev=it.Prev();
-         it.Prev(NULL);
-      }
-      return it;
    }
 };
  
