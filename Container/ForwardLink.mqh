@@ -32,10 +32,8 @@ public:
    }
 
    void Insert(STDForwardLinkNode<Type>* where, STDForwardLinkNode<Type>* it){
-      if (!where){
-         Push(it);
-      }
-      else where.Insert(it);
+      if (where)
+         where.Insert(it);
    }
 
    void Pop(){
@@ -49,7 +47,6 @@ public:
    void EraseBefore(STDForwardLinkNode<Type>* where){
       if (where)
          where.EraceBefore();
-      else Pop();
    }
 
    STDForwardLinkNode<Type>* Extract(){
@@ -62,7 +59,7 @@ public:
    }
 
    STDForwardLinkNode<Type>* ExtractBefore(STDForwardLinkNode<Type>* where){
-      return !where?Extract():where.ExtractBefore();
+      return !where?NULL:where.ExtractBefore();
    }
    
    STDForwardLinkNode<Type>* ReplaceTop(STDForwardLinkNode<Type>* it){
@@ -80,6 +77,8 @@ public:
    }
    
    STDForwardLinkNode<Type>* ReplaceBefore (STDForwardLinkNode<Type>* where, STDForwardLinkNode<Type>* it){
+      if (!it)
+         return !where?NULL:where.ReplaceBefore(it);
       return !where?ReplaceTop(it):where.ReplaceBefore(it);
    }
          

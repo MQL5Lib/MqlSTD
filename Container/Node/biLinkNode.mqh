@@ -34,7 +34,7 @@ public:
       m_next=NULL;
    }
 
-   void Replace (STDForwardLinkNode<Type>* it){
+   void Replace (STDBiLinkNode<Type>* it){
       if (it){
          it.m_prev=m_prev;
          it.m_next=m_next;
@@ -45,6 +45,7 @@ public:
          m_prev=NULL;
          m_next=NULL;
       }
+      else Extract();
    }
 private:
    void _Remove(){
