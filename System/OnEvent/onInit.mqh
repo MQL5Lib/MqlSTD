@@ -119,46 +119,38 @@ class STDOnInit{
 public:
    static ENUM_INIT_RETCODE Invoke();
    static STDOnInitResultVoid* Start() {return &s_start;}
-   static STDOnInitResultVoid* Restart() {return &s_restart;}
    static STDOnInitResultVoid* Param() {return &s_param;}
    static STDOnInitResultSymbol* Symbol() {return &s_symbolEvent;}
    static STDOnInitResultPeriod* Period() {return &s_periodEvent;}
 private:
    static ENUM_INIT_RETCODE InvokeStart();
-   static ENUM_INIT_RETCODE InvokeRestart();
    static ENUM_INIT_RETCODE InvokeSymbol();
    static ENUM_INIT_RETCODE InvokePeriod();   
    static ENUM_INIT_RETCODE InvokeParam();
    static void OnDeinitFunc(int reason);
 private:
    static STDOnInitResultVoid s_start;
-   static STDOnInitResultVoid s_restart;
    static STDOnInitResultVoid s_param;
    static STDOnInitResultSymbol s_symbolEvent;
    static STDOnInitResultPeriod s_periodEvent;
    static string s_symbol;
    static ENUM_TIMEFRAMES s_period;
    static bool s_isStart;
-   static bool s_isRestart;
    static bool s_isParam;
 };
 
 STDOnInitResultVoid STDOnInit::s_start;
-STDOnInitResultVoid STDOnInit::s_restart;
 STDOnInitResultVoid STDOnInit::s_param;
 STDOnInitResultSymbol STDOnInit::s_symbolEvent;
 STDOnInitResultPeriod STDOnInit::s_periodEvent;
 string STDOnInit::s_symbol=NULL;
 ENUM_TIMEFRAMES STDOnInit::s_period=PERIOD_CURRENT;
 bool STDOnInit::s_isStart=false;
-bool STDOnInit::s_isRestart=false;
 bool STDOnInit::s_isParam=false;
 
 ENUM_INIT_RETCODE STDOnInit::Invoke(){
    if (!s_isStart)
       return InvokeStart();
-   if (s_isRestart)
-      return InvokeRestart();
    if (s_isParam)
       return InvokeParam();
    ENUM_INIT_RETCODE ret=INIT_SUCCEEDED;
@@ -178,13 +170,6 @@ ENUM_INIT_RETCODE STDOnInit::InvokeStart(){
    s_symbol=_Symbol;
    s_period=_Period;
    return s_start.Invoke();
-}
-
-ENUM_INIT_RETCODE STDOnInit::InvokeRestart(){
-   s_isRestart=false;
-   s_symbol=_Symbol;
-   s_period=_Period;
-   return s_restart.Invoke();
 }
 
 ENUM_INIT_RETCODE STDOnInit::InvokeSymbol(){
