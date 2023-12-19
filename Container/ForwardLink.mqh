@@ -44,9 +44,10 @@ public:
       }
    }
 
-   void EraseBefore(STDForwardLinkNode<Type>* where){
+   STDForwardLinkNode<Type>* EraseBefore(STDForwardLinkNode<Type>* where){
       if (where)
          where.EraceBefore();
+      return where;
    }
 
    STDForwardLinkNode<Type>* Extract(){
