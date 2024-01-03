@@ -5,7 +5,6 @@
 class STDSymbol;
 
 #define _stdChartSymbol STDSingleton<STDSymbol>::Inst()
-#define _stdLazySymbolString STDLazyEnvGet2<string,__lazySTDSymbolString>
 
 _stdEvent2(SymbolReset,const STDSymbol&,const string&);
 
