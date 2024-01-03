@@ -19,7 +19,7 @@ public:
    static int HandlesUsed() {return (int)Get(MQL_HANDLES_USED);}
    static int MemoryLimit() {return (int)Get(MQL_MEMORY_LIMIT);}
    static int MemoryUsed() {return (int)Get(MQL_MEMORY_USED);}
-   static int MemoryAviable() {return MemoryLimit() - MemoryUsed();}
+   static int MemoryAvailable() {return MemoryLimit() - MemoryUsed();}
    
    static ENUM_PROGRAM_TYPE ProgramType() {return (ENUM_PROGRAM_TYPE)Get(MQL_PROGRAM_TYPE);}
    static ENUM_LICENSE_TYPE LicenseType() {return (ENUM_LICENSE_TYPE)Get(MQL_LICENSE_TYPE);}
