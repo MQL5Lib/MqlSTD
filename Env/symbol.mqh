@@ -1,5 +1,6 @@
 #include "../event.mqh"
 #include "../memory.mqh"
+#include "../pattern.mqh"
 #include "../Math/compare.mqh"
 
 class STDSymbol;

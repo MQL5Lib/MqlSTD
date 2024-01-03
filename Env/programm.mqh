@@ -1,4 +1,5 @@
 #include "../memory.mqh"
+#include "../pattern.mqh"
 
 #define _stdProgramm STDSingleton<STDProgramm>::Inst()
 
