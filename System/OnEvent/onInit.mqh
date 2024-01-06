@@ -21,8 +21,8 @@ public:
 template<typename FuncGlobal, typename FuncObject>
 class STDOnInitResultBase{
 public:
-   void Add(FuncGlobal foo) {m_list.PushBack(STDOnInitResultHolder<FuncGlobal,FuncObject>(foo));}
-   void Add(void* it,FuncObject foo) {m_list.PushBack(STDOnInitResultHolder<FuncGlobal,FuncObject>(it,foo));}
+   void Add(FuncGlobal foo) {m_list.PushBack((STDOnInitResultHolder<FuncGlobal,FuncObject>(foo)));}
+   void Add(void* it,FuncObject foo) {m_list.PushBack((STDOnInitResultHolder<FuncGlobal,FuncObject>(it,foo)));}
    void Remove(FuncGlobal foo);
    void Remove(void* it,FuncObject foo);
 protected:
@@ -168,7 +168,7 @@ ENUM_INIT_RETCODE STDOnInit::InvokeStart(){
    STDOnDeinit::Event().Add(STDOnInit::OnDeinitFunc);
    s_isStart=true;
    s_symbol=_Symbol;
-   s_period=_Period;
+   s_period=(ENUM_TIMEFRAMES)_Period;
    return s_start.Invoke();
 }
 
@@ -180,7 +180,7 @@ ENUM_INIT_RETCODE STDOnInit::InvokeSymbol(){
 
 ENUM_INIT_RETCODE STDOnInit::InvokePeriod(){
    ENUM_INIT_RETCODE ret = s_periodEvent.Invoke(s_period);
-   s_period=_Period;
+   s_period=(ENUM_TIMEFRAMES)_Period;
    return ret;
 }
 

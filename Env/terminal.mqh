@@ -28,14 +28,6 @@ public:
    static int MemoryUsed() {return (int)Get(TERMINAL_MEMORY_USED);}
    static int OpenClSupport() {return (int)Get(TERMINAL_OPENCL_SUPPORT);}
    static int ScreenDpi() {return (int)Get(TERMINAL_SCREEN_DPI);}
-   static int ScreenLeft() {return (int)Get(TERMINAL_SCREEN_LEFT);}
-   static int ScreenTop() {return (int)Get(TERMINAL_SCREEN_TOP);}
-   static int ScreenHeight() {return (int)Get(TERMINAL_SCREEN_HEIGHT);}
-   static int ScreenWidth() {return (int)Get(TERMINAL_SCREEN_WIDTH);}
-   static int Left() {return (int)Get(TERMINAL_LEFT);}
-   static int Top() {return (int)Get(TERMINAL_TOP);}
-   static int Right() {return (int)Get(TERMINAL_RIGHT);}
-   static int Bottom() {return (int)Get(TERMINAL_BOTTOM);}
    static int PingLast() {return (int)Get(TERMINAL_PING_LAST);}   
    
    static int KeyStateLeft() {return (int)Get(TERMINAL_KEYSTATE_LEFT);}   
@@ -66,11 +58,23 @@ public:
    static string Path() {return Get(TERMINAL_PATH);}
    static string DataPath() {return Get(TERMINAL_DATA_PATH);}
    static string CommonDataPath() {return Get(TERMINAL_COMMONDATA_PATH);}
-   static string CommonCpuName() {return Get(TERMINAL_CPU_NAME);}
-   static string CommonCpuArchitecture() {return Get(TERMINAL_CPU_ARCHITECTURE);}
-   static string CommonOsVersion() {return Get(TERMINAL_OS_VERSION);}
    
    static long Get(ENUM_TERMINAL_INFO_INTEGER propId) {return TerminalInfoInteger(propId);}
    static double Get(ENUM_TERMINAL_INFO_DOUBLE propId) {return TerminalInfoDouble(propId);}
    static string Get(ENUM_TERMINAL_INFO_STRING propId) {return TerminalInfoString(propId);}
+
+#ifdef __MQL5__
+   static int ScreenLeft() {return (int)Get(TERMINAL_SCREEN_LEFT);}
+   static int ScreenTop() {return (int)Get(TERMINAL_SCREEN_TOP);}
+   static int ScreenHeight() {return (int)Get(TERMINAL_SCREEN_HEIGHT);}
+   static int ScreenWidth() {return (int)Get(TERMINAL_SCREEN_WIDTH);}
+   static int Left() {return (int)Get(TERMINAL_LEFT);}
+   static int Top() {return (int)Get(TERMINAL_TOP);}
+   static int Right() {return (int)Get(TERMINAL_RIGHT);}
+   static int Bottom() {return (int)Get(TERMINAL_BOTTOM);}
+
+   static string CommonCpuName() {return Get(TERMINAL_CPU_NAME);}
+   static string CommonCpuArchitecture() {return Get(TERMINAL_CPU_ARCHITECTURE);}
+   static string CommonOsVersion() {return Get(TERMINAL_OS_VERSION);}
+#endif
 };
