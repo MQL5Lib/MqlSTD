@@ -1,13 +1,9 @@
-#define _stdCompare ECompare
-#define _eMore e_compareMore
-#define _eEqually e_compareEqually
-#define _eLess e_compareLess
+#include "../Common/types.mqh"
 
-enum ECompare{
-   e_compareLess=-1,
-   e_compareEqually=0,
-   e_compareMore=1
-};
+#define _stdCompare EUpDown
+#define _eMore eUp
+#define _eEqually eEqual
+#define _eLess eDown
 
 template<typename Type1,typename Type2>
 bool Less(Type1 l,Type2 r){
