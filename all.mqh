@@ -3,4 +3,5 @@
 #include "math.mqh"
 #include "memory.mqh"
 #include "pattern.mqh"
+#include "trade.mqh"
 #include "system.mqh"

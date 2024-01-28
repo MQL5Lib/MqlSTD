@@ -1,0 +1,1 @@
+#include "Trade/all.mqh"
