@@ -10,7 +10,7 @@ public:
    static void __InitEnableSharedFromThis(STDEnableSharedFromThis* obj,STDSharedPtr<Type>& ptr) {obj.__SetPtr(ptr);}
    static void __InitEnableSharedFromThis(void* obj,STDSharedPtr<Type>& ptr) {}
    static STDSharedPtr<Type> __CloneEnableSharedFromThis(STDEnableSharedFromThis* obj) {return obj.SharedFromThis();}
-   static STDSharedPtr<Type> __CloneEnableSharedFromThis(void* obj) {return STDSharedPtr<Type>();}
+   static STDSharedPtr<Type> __CloneEnableSharedFromThis(void* obj) {return (STDSharedPtr<Type>());}
    STDWeakPtr<Type> WeakFromThis() {return m_val;}
    STDSharedPtr<Type> SharedFromThis() {return m_val.Lock();}
    void __SetPtr(STDSharedPtr<Type>& ptr) {m_val=ptr;}

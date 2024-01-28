@@ -16,7 +16,6 @@ public:
    static bool IsVisualMode() {return (bool)Get(MQL_VISUAL_MODE);}
    static bool IsFrameMode() {return (bool)Get(MQL_FRAME_MODE);}
    
-   static int HandlesUsed() {return (int)Get(MQL_HANDLES_USED);}
    static int MemoryLimit() {return (int)Get(MQL_MEMORY_LIMIT);}
    static int MemoryUsed() {return (int)Get(MQL_MEMORY_USED);}
    static int MemoryAvailable() {return MemoryLimit() - MemoryUsed();}
@@ -29,4 +28,8 @@ public:
    
    static long Get(ENUM_MQL_INFO_INTEGER propId) {return MQLInfoInteger(propId);}
    static string Get(ENUM_MQL_INFO_STRING propId) {return MQLInfoString(propId);}
+   
+#ifdef __MQL5_
+   static int HandlesUsed() {return (int)Get(MQL_HANDLES_USED);}
+#endif
 };

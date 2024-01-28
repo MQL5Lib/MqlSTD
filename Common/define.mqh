@@ -3,3 +3,5 @@
 #else
    #define DEL(ptr) delete ptr
 #endif
+
+const string g_emptyString = "";

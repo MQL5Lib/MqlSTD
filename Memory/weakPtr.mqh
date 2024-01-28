@@ -95,8 +95,8 @@ void STDWeakPtr::operator =(STDWeakPtr<Type> &other){
 template<typename Type>
 STDSharedPtr<Type> STDWeakPtr::Lock(){
    if (!m_counter||!m_counter.shared)
-      return STDSharedPtr<Type>();
-   return STDSharedPtr<Type>(m_ptr,m_counter);
+      return (STDSharedPtr<Type>());
+   return (STDSharedPtr<Type>(m_ptr,m_counter));
 }
 
 template<typename Type>
