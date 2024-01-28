@@ -5,9 +5,6 @@
 
 class STDAccount{
 public:
-   static bool IsFifoClose() {return (bool)Get(ACCOUNT_FIFO_CLOSE);}
-   static bool IsHedgeAlloed() {return (bool)Get(ACCOUNT_HEDGE_ALLOWED);}
-
    static long Login() {return Get(ACCOUNT_LOGIN);}
    static long Leverage() {return Get(ACCOUNT_LEVERAGE);}
    
@@ -20,14 +17,8 @@ public:
    static double MarginLevel() {return Get(ACCOUNT_MARGIN_LEVEL);}
    static double MarginCall() {return Get(ACCOUNT_MARGIN_SO_CALL);}
    static double MarginStopOut() {return Get(ACCOUNT_MARGIN_SO_SO);}
-   static double MarginInitial() {return Get(ACCOUNT_MARGIN_INITIAL);}
-   static double MarginMaintenance() {return Get(ACCOUNT_MARGIN_MAINTENANCE);}
-   static double Assets() {return Get(ACCOUNT_ASSETS);}
-   static double Liabikities() {return Get(ACCOUNT_LIABILITIES);}
-   static double ComissionBlocked() {return Get(ACCOUNT_COMMISSION_BLOCKED);}
    
    static int LimitOrders()  {return (int)Get(ACCOUNT_LIMIT_ORDERS);}
-   static int CurrencyDigits()  {return (int)Get(ACCOUNT_CURRENCY_DIGITS);}
    
    static ENUM_ACCOUNT_TRADE_MODE TradeMode() {return (ENUM_ACCOUNT_TRADE_MODE)Get(ACCOUNT_TRADE_MODE);}
    static ENUM_ACCOUNT_STOPOUT_MODE StopOutMode() {return (ENUM_ACCOUNT_STOPOUT_MODE)Get(ACCOUNT_MARGIN_SO_MODE);}
@@ -40,4 +31,17 @@ public:
    static long Get(ENUM_ACCOUNT_INFO_INTEGER propId) {return AccountInfoInteger(propId);}
    static double Get(ENUM_ACCOUNT_INFO_DOUBLE propId) {return AccountInfoDouble(propId);}
    static string Get(ENUM_ACCOUNT_INFO_STRING propId) {return AccountInfoString(propId);}
+
+#ifdef __MQL5__
+   static bool IsFifoClose() {return (bool)Get(ACCOUNT_FIFO_CLOSE);}
+   static bool IsHedgeAlloed() {return (bool)Get(ACCOUNT_HEDGE_ALLOWED);}
+
+   static int CurrencyDigits()  {return (int)Get(ACCOUNT_CURRENCY_DIGITS);}
+   
+   static double MarginInitial() {return Get(ACCOUNT_MARGIN_INITIAL);}
+   static double MarginMaintenance() {return Get(ACCOUNT_MARGIN_MAINTENANCE);}
+   static double Assets() {return Get(ACCOUNT_ASSETS);}
+   static double Liabikities() {return Get(ACCOUNT_LIABILITIES);}
+   static double ComissionBlocked() {return Get(ACCOUNT_COMMISSION_BLOCKED);}
+#endif
 };
