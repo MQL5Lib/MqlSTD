@@ -3,6 +3,7 @@ public:
    StdStopsSnapshot();
    StdStopsSnapshot(const StdStopsSnapshot& other);
    StdStopsSnapshot(double sl, double tp);
+   StdStopsSnapshot* operator = (const StdStopsSnapshot& other);
    double SL() const {return m_sl;}
    double TP() const {return m_tp;}
    double CheckSL(double sl) const {return sl==m_sl?EMPTY_VALUE:m_sl;}
@@ -27,6 +28,13 @@ StdStopsSnapshot::StdStopsSnapshot(const StdStopsSnapshot& other):
 StdStopsSnapshot::StdStopsSnapshot(double sl, double tp):
    m_sl(sl),
    m_tp(tp){}
+//-----------------------------------------------
+StdStopsSnapshot* StdStopsSnapshot::operator =(const StdStopsSnapshot& other){
+   m_sl = other.m_sl;
+   m_tp = other.m_tp;
+   return &this;
+}
+
 //--------------------------------------------
 void StdStopsSnapshot::Set(double sl,double tp){
    m_sl = sl;

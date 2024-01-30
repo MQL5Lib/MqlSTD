@@ -28,3 +28,9 @@ void StdStopsControl::SetStops(double sl,double tp){
    else
       m_newStops.Get().Set(sl,tp);
 }
+//---------------------------------------------
+void StdStopsControl::StopsSet(void){
+   if (!m_newStops)
+      return;
+   m_stops = m_newStops.Get();
+}
