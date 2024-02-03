@@ -1,1 +1,1 @@
-#include "stopSnapshot.mqh"
+#include "stopsSnapshot.mqh"
