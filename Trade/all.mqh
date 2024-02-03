@@ -1,0 +1,1 @@
+#include "Stops/all.mqh"
