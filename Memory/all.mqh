@@ -1,4 +1,5 @@
 #include "enableSharedFromThis.mqh"
+#include "pair.mqh"
 #include "sharedPtr.mqh"
 #include "uniquePtr.mqh"
 #include "weakPtr.mqh"
