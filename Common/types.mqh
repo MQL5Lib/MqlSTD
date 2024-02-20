@@ -1,7 +1,9 @@
 #ifdef __MQL5__
    #define _stdSizeT ulong
+   #define _stdSSizeT long
 #else
    #define _stdSizeT uint
+   #define _stdSSizeT int
 #endif
 
 enum EUpDown{
