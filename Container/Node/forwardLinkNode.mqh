@@ -1,12 +1,12 @@
 #include "linkNode.mqh"
 
-#define _stdForwardLinkNode(type) _STDForwardLinkNode<STDForwardLinkNode<type>,type>
+#define _stdForwardLinkNode(type) _StdForwardLinkNode<StdForwardLinkNode<type>,type>
 
 template<typename NodeType, typename Type>
-class _STDForwardLinkNode:public STDLinkNode<Type>{
+class _StdForwardLinkNode:public STDLinkNode<Type>{
 public:
-   _STDForwardLinkNode():STDLinkNode(),m_prev(NULL){}
-   _STDForwardLinkNode(const Type& obj, NodeType* prev):STDLinkNode(obj),m_prev(prev){}
+   _StdForwardLinkNode():STDLinkNode(),m_prev(NULL){}
+   _StdForwardLinkNode(const Type& obj, NodeType* prev):STDLinkNode(obj),m_prev(prev){}
    NodeType* Prev() {return m_prev;}
    const NodeType* Prev() const {return m_prev;}
    void Prev(NodeType* prev) {m_prev=prev;}
@@ -20,26 +20,26 @@ protected:
 };
 
 template<typename Type>
-class STDForwardLinkNode:public _stdForwardLinkNode(Type){
+class StdForwardLinkNode:public _stdForwardLinkNode(Type){
 public:
-   STDForwardLinkNode():_stdForwardLinkNode(Type)(){}
-   STDForwardLinkNode(const Type& obj, STDForwardLinkNode<Type>* prev=NULL):_stdForwardLinkNode(Type)(obj, prev){}
+   StdForwardLinkNode():_stdForwardLinkNode(Type)(){}
+   StdForwardLinkNode(const Type& obj, StdForwardLinkNode<Type>* prev=NULL):_stdForwardLinkNode(Type)(obj, prev){}
    
-   void Insert(STDForwardLinkNode<Type>* it){
+   void Insert(StdForwardLinkNode<Type>* it){
       if (it)
          _Insert(it);
    }
    
    void EraseBefore(){
       if (m_prev){
-         STDForwardLinkNode* it = m_prev;
+         StdForwardLinkNode* it = m_prev;
          m_prev=m_prev.m_prev;
          delete it;
       }
    }
 
-   STDForwardLinkNode<Type>* ExtractBefore(){
-      STDForwardLinkNode<Type>* it = m_prev;
+   StdForwardLinkNode<Type>* ExtractBefore(){
+      StdForwardLinkNode<Type>* it = m_prev;
       if (it){
          m_prev=it.Prev();
          it.Prev(NULL);
@@ -47,8 +47,8 @@ public:
       return it;
    }
 
-   STDForwardLinkNode<Type>* ReplaceBefore (STDForwardLinkNode<Type>* it){
-      STDForwardLinkNode<Type>* ret = m_prev;
+   StdForwardLinkNode<Type>* ReplaceBefore (StdForwardLinkNode<Type>* it){
+      StdForwardLinkNode<Type>* ret = m_prev;
       m_prev = it;
       if (ret){
          m_prev.Prev(ret.Prev());

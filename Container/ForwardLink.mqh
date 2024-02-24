@@ -1,88 +1,88 @@
 #include "Node/forwardLinkNode.mqh"
 
 template<typename Type>
-class STDForwardLink{
+class StdForwardLink{
 public:
-   STDForwardLink():m_top(NULL){}
-   ~STDForwardLink() {Clear();}
+   StdForwardLink():m_top(NULL){}
+   ~StdForwardLink() {Clear();}
    bool IsEmpty() const {return !m_top;}
-   STDForwardLinkNode<Type>* Top() {return m_top;}
-   const STDForwardLinkNode<Type>* Top() const {return m_top;}
+   StdForwardLinkNode<Type>* Top() {return m_top;}
+   const StdForwardLinkNode<Type>* Top() const {return m_top;}
    
    void Clear(){
       while(m_top){
-         STDForwardLinkNode<Type>* it = m_top;
+         StdForwardLinkNode<Type>* it = m_top;
          m_top=m_top.Prev();
          delete it;      
       }
    }
    
-   STDForwardLink*  Swap(STDForwardLink& other){
-      STDForwardLinkNode<Type>* tmp = m_top;
+   StdForwardLink*  Swap(StdForwardLink& other){
+      StdForwardLinkNode<Type>* tmp = m_top;
       m_top = other.m_top;
       other.m_top = tmp;
       return &other;
    }
    
-   void Push(STDForwardLinkNode<Type>* it){
+   void Push(StdForwardLinkNode<Type>* it){
       if (it){
          it.Prev(m_top);
          m_top=it;
       }
    }
 
-   void Insert(STDForwardLinkNode<Type>* where, STDForwardLinkNode<Type>* it){
+   void Insert(StdForwardLinkNode<Type>* where, StdForwardLinkNode<Type>* it){
       if (where)
          where.Insert(it);
    }
 
    void Pop(){
       if (m_top){
-         STDForwardLinkNode<Type>* it = m_top;
+         StdForwardLinkNode<Type>* it = m_top;
          m_top=m_top.Prev();
          delete it;
       }
    }
 
-   STDForwardLinkNode<Type>* EraseBefore(STDForwardLinkNode<Type>* where){
+   StdForwardLinkNode<Type>* EraseBefore(StdForwardLinkNode<Type>* where){
       if (where)
-         where.EraceBefore();
+         where.EraseBefore();
       return where;
    }
 
-   STDForwardLinkNode<Type>* Extract(){
+   StdForwardLinkNode<Type>* Extract(){
       if (IsEmpty())
          return NULL;
-      STDForwardLinkNode<Type>* ret = m_top;
+      StdForwardLinkNode<Type>* ret = m_top;
       m_top=m_top.Prev();
       ret.Prev(NULL);
       return ret;
    }
 
-   STDForwardLinkNode<Type>* ExtractBefore(STDForwardLinkNode<Type>* where){
+   StdForwardLinkNode<Type>* ExtractBefore(StdForwardLinkNode<Type>* where){
       return !where?NULL:where.ExtractBefore();
    }
    
-   STDForwardLinkNode<Type>* ReplaceTop(STDForwardLinkNode<Type>* it){
+   StdForwardLinkNode<Type>* ReplaceTop(StdForwardLinkNode<Type>* it){
       if (!it)
          return Extract();
       if (IsEmpty()){
          Push(it);
          return NULL;
       }
-      STDForwardLinkNode<Type>* ret=m_top;
+      StdForwardLinkNode<Type>* ret=m_top;
       m_top=it;
       m_top.Prev(ret.Prev());
       ret.Prev(NULL);
       return ret;
    }
    
-   STDForwardLinkNode<Type>* ReplaceBefore (STDForwardLinkNode<Type>* where, STDForwardLinkNode<Type>* it){
+   StdForwardLinkNode<Type>* ReplaceBefore (StdForwardLinkNode<Type>* where, StdForwardLinkNode<Type>* it){
       if (!it)
          return !where?NULL:where.ReplaceBefore(it);
       return !where?ReplaceTop(it):where.ReplaceBefore(it);
    }
          
 private:
-   STDForwardLinkNode<Type>* m_top;
+   StdForwardLinkNode<Type>* m_top;
 };
